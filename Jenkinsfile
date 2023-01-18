@@ -26,32 +26,27 @@ pipeline {
             steps {
                 sh 'mvn -s settings.xml -DskipTests install'
             }
-            post {
-                success {
-                    echo "Now Archiving"
-                    archiveArtifacts artifacts: '**/*.war'
-                }
-            }    
+              
         }
-    
-    stage('TEST'){
+    }
+        stage('TEST'){
             steps {
                 sh 'mvn -s settings.xml test'
             }
-    }
+        }
 
-    stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
             }
         }
-    }
 
-    stage('CODE ANALYSIS with SONARQUBE') {
-		environment {
-            scannerHome = tool 'sonarscanner4'
-        }
 
+        stage('CODE ANALYSIS with SONARQUBE') {
+		    environment {
+                scannerHome = tool 'sonarscanner4'
+            }
+        
           steps {
             withSonarQubeEnv('sonar-pro') {
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
@@ -63,8 +58,9 @@ pipeline {
                    -Dsonar.jacoco.reportsPath=target/jacoco.exec \
                    -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
             }
-        }
-    }
+  
+        }   
+    }   
 }
         
 
