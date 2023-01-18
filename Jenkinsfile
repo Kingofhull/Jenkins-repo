@@ -5,14 +5,13 @@ pipeline {
         jdk "OracleJDK8"
     }
 
-
     environment {
-        SNAP_REPO = "vprofile-snapshot"
-        NEXUS_USER = "admin"
-        NEXUS_PASS = "Okwy5050+"
-        RELEASE_REPO = "vprofile-release"
-	    CENTRAL_REPO = "vpro-maven-central"
-        NEXUSIP = "172.31.93.27"
+        SNAP_REPO = 'vprofile-snapshot'
+        NEXUS_USER = 'admin'
+        NEXUS_PASS = 'Okwy5050+'
+        RELEASE_REPO = 'vprofile-release'
+	    CENTRAL_REPO = 'vpro-maven-central'
+        NEXUSIP = '172.31.93.27'
         NEXUSPORT = '8081'
         NEXUS_GRP_REPO = 'vpro-maven-group'
         NEXUS_LOGIN = 'nexuslogin'
@@ -51,9 +50,9 @@ pipeline {
                 scannerHome = tool "${SONARSCANNER}"
 
             }
-          steps {
-            withSonarQubeEnv("${SONARSCANNER}") {
-               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+            steps {
+                withSonarQubeEnv("${SONARSCANNER}") {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile-repo \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
