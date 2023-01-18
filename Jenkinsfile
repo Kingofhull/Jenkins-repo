@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
             }
@@ -44,11 +44,11 @@ pipeline {
 
         stage('CODE ANALYSIS with SONARQUBE') {
 		    environment {
-                scannerHome = tool 'sonarscanner4'
+                scannerHome = tool "${SONARSCANNER}"
             }
         
           steps {
-            withSonarQubeEnv('sonar-pro') {
+            withSonarQubeEnv("${SONARSCANNER}") {
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile-repo \
                    -Dsonar.projectVersion=1.0 \
