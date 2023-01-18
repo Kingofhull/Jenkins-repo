@@ -26,27 +26,30 @@ pipeline {
             steps {
                 sh 'mvn -s settings.xml -DskipTests install'
             }
-              
+            post {
+                success {
+                    echo "Now Archiving."
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
         }
-    }
-        stage('UNIT TEST'){
+
+        stage('TEST'){
             steps {
                 sh 'mvn -s settings.xml test'
             }
         }
 
-        stage('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage('Checkstyle Analysis'){
             steps {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
             }
         }
 
-
-        stage('CODE ANALYSIS with SONARQUBE') {
+        stage('Sonar Analysis') {
 		    environment {
                 scannerHome = tool "${SONARSCANNER}"
             }
-        
           steps {
             withSonarQubeEnv("${SONARSCANNER}") {
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
