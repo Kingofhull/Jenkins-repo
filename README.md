@@ -42,28 +42,40 @@ and as well using the scanner to scan my code and publish the code in Sonarqube 
 
 2. create key pair
 
+
 3. create SG for jenkins, Nexus, Sonarqube
+
 
 4. create EC2 instances with userdata  and it will provision jenkins, Nexus, Sonarkqube
 
+
 5. Post installation
+
 
 6. Jenkins setup and plugin
 
+
 7. Nexus setup and repo setup
+
 
 8. Sonarqube login test
 
+
 9. Create a github repo and migrate code
+
 
 10. Build job with Nexus integration
 
+
 11. Github Webhook
+
 
 12. Sonarqube server integration stage
 
+
 13. Slack artifact upload stage
 
-14. Slack Notification
+
+14. Slack Notification integration with Jenkins
 
 
