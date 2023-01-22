@@ -1,7 +1,7 @@
 # CONTINUOUS INTEGRATION WITH JENKINS
 
 
-##Services used:
+### Services used:
 
 - Git & github
 
@@ -40,13 +40,13 @@ and as well using the scanner to scan my code and publish the code in Sonarqube 
 
 1. Login to AWS console
 
-2. create key pair
+2. Create key pair
 
 
-3. create SG for jenkins, Nexus, Sonarqube
+3. Create SG for jenkins, Nexus, Sonarqube
 
 
-4. create EC2 instances with userdata  and it will provision jenkins, Nexus, Sonarkqube
+4. Create EC2 instances with userdata  and it will provision Jenkins, Nexus, Sonarqube
 
 
 5. Post installation
@@ -73,9 +73,31 @@ and as well using the scanner to scan my code and publish the code in Sonarqube 
 12. Sonarqube server integration stage
 
 
-13. Slack artifact upload stage
+13. Artifact upload stage
 
 
 14. Slack Notification integration with Jenkins
+
+
+
+### END RESULT OF THIS PIPELINE
+
+When developers make changes to the source code
+
+- There will  be a trigger 
+
+- It will build the artifact
+
+- Dependencies will be downloaded from Nexus
+
+- Test with Unit Test
+
+- Run code analysis with Checkstyle 
+
+- Sonar Scanner Analysis will be carried out and it will upload all the result to Sonarqube server if all the quality gate are passed and lastly 
+
+- Artifact will be uploaded to NEXUS
+
+- Notification will be send on slack channel whether there is a failure or a successful build
 
 
