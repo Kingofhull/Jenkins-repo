@@ -98,6 +98,6 @@ When developers make changes to the source code
 
 - Artifact will be uploaded to NEXUS
 
-- Notification will be send on slack channel whether there is a failure or a successful build
+- Notification will be send on slack channel whether there is a failure or a successful build.
 
 
