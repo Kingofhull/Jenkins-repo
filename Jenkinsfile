@@ -26,11 +26,11 @@ pipeline {
             }
         }
             
-            post {
-                success {
-                    echo "Now Archiving"
-                    archiveArtifacts artifacts: '**/*.war'
-                }
+        post {
+            success {
+                echo "Now Archiving"
+                archiveArtifacts artifacts: '**/*.war'
             }
         }
     }
+}
